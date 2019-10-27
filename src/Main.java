@@ -1,4 +1,5 @@
 import interfaces.impls.Collection;
+import interfaces.impls.TestCollection;
 
 public class Main {
 
@@ -7,6 +8,34 @@ public class Main {
         Collection collection2 = new Collection();
         Collection collection3 = new Collection();
         String[] strings = new String[]{"M", "N", "O", "P"};
+        TestCollection testCollection = new TestCollection();
+
+        System.out.println("----------------------");
+        System.out.println("Speed Test");
+        collection.clear();
+        testCollection.clear();
+        long start = System.nanoTime();
+
+        for (int i = 0; i < 10000; i++){
+            collection.add("test");
+        }
+
+        long end = System.nanoTime();
+
+        System.out.println(end - start);
+
+        long start1 = System.nanoTime();
+
+        for (int i = 0; i < 10000; i++){
+            testCollection.add("test");
+        }
+
+        long end1 = System.nanoTime();
+
+        System.out.println(end1 - start1);
+
+        collection.clear();
+        System.out.println("----------------------");
 
         collection.add("A");
         collection.add("B");
@@ -20,6 +49,7 @@ public class Main {
         collection.add("J");
         collection.add("K");
         collection.add("L");
+        collection.trim();
 
 
         collection2.add("L");
@@ -93,5 +123,6 @@ public class Main {
         System.out.println(collection.getSize());
         collection.clear();
         System.out.println(collection.getSize());
+
     }
 }

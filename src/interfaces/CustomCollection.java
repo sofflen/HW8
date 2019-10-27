@@ -6,7 +6,7 @@ public interface CustomCollection {
 
     int getSize();
 
-    void add(String string);
+    boolean add(String string);
 
     boolean contains(String string);
 

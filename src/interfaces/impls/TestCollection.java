@@ -2,7 +2,7 @@ package interfaces.impls;
 
 import interfaces.CustomCollection;
 
-public class Collection implements CustomCollection {
+public class TestCollection implements CustomCollection {
 
     private String[] arr;
     private int count = 0;
@@ -11,7 +11,7 @@ public class Collection implements CustomCollection {
         return arr;
     }
 
-    public Collection() {
+    public TestCollection() {
         arr = new String[10];
     }
 
@@ -26,7 +26,7 @@ public class Collection implements CustomCollection {
         if (count < arr.length) {
             arr[count] = string;
         } else {
-            arrNew = new String[(int) (arr.length * 1.6)];
+            arrNew = new String[(arr.length + 1)];
             for (int i = 0; i < arr.length; i++) {
                 arrNew[i] = arr[i];
             }
@@ -79,10 +79,10 @@ public class Collection implements CustomCollection {
 
     @Override
     public boolean equals(Collection collection) {
-        if (this.count != collection.count) {
+        if (this.count != collection.getSize()) {
             return false;
         }
-        for (int i = 0; i < collection.count; i++) {
+        for (int i = 0; i < collection.getSize(); i++) {
             if (!this.contains(collection.getByIndex(i))) return false;
         }
         return true;
@@ -108,8 +108,8 @@ public class Collection implements CustomCollection {
 
     @Override
     public boolean addAll(Collection strColl) {
-        for (int i = 0; i < strColl.count; i++) {
-            add(strColl.arr[i]);
+        for (int i = 0; i < strColl.getSize(); i++) {
+            add(strColl.getArr()[i]);
         }
         return true;
     }
@@ -137,5 +137,4 @@ public class Collection implements CustomCollection {
         count = 0;
     }
 }
-
 
